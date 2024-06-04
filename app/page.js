@@ -24,15 +24,15 @@ export default function Home() {
   
   return (
     //<p>Krisha</p>
-    <main>
-      <h2>DOG BREEDS</h2>
-      <div>
+    <main className="p-8 bg-gray-100 min-h-screen">
+      <h2 className="text-3xl font-bold text-center mb-8">DOG BREEDS</h2>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
         {Object.keys(dogData).map((breed, index)=>{
           // const image = await getDogImage(breed);
           return(
-            <div key={index}>
+            <div key={index} className="bg-white p-4 rounded shadow-lg flex flex-col items-center">
               <DogImage breed = {breed}/>
-              <h2>{breed}</h2>
+              <h2 className="text-lg font-semibold text-center mt-2 capitalize">{breed}</h2>
             </div>
           )
         })}
@@ -57,5 +57,9 @@ const DogImage = ({breed})=>{
   },[breed]);
 
 
-  return <img src={pic} />
+  return (
+    <div className="w-64 h-64 overflow-hidden rounded-md">
+    <img src={pic} alt={breed} className="object-cover w-full h-full " />;
+    </div>
+  );
 }
